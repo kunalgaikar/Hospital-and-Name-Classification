@@ -5,6 +5,7 @@ Here we classify a given name into Human Name and Hospital Name classes.
 # Required Libraries and their uses-
 # First we need to import libraries like-
 1--> Pandas for mostly used for data analysis tasks in Python .Pandas library works well for numeric, alphabets, and heterogeneous types of data simultaneously.
+
 2--> NumPy for mostly used for working with Numerical values as it makes it easy to apply mathematical functions.
 3--> tensorflow for Being an Open-Source library for deep learning and machine learning, TensorFlow plays a role in text-based applications, image recognition, voice search, and many more.
 4--> Keras sequential model is suitable for analysis and comparison of simple neural network-oriented models which comprises layers and their associated data using top to bottom flow. It makes use of a single set of input as to value and a single set of output as per flow.
