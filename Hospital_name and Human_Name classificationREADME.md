@@ -1,24 +1,24 @@
 # Hospital-and-Name-Classification
 # Assignment Name :- Hospital_name and Human_Name classification.
-# Here we classify a given name into Human Name and Hospital Name classes.
-# So, we use Deep learning - •	 character-level models.
+Here we classify a given name into Human Name and Hospital Name classes.
+ So, we use Deep learning - •	 character-level models.
 # Required Libraries and their uses-
 # First we need to import libraries like-
-# 1--> Pandas for mostly used for data analysis tasks in Python .Pandas library works well for numeric, alphabets, and heterogeneous types of data simultaneously.
-# 2--> NumPy for mostly used for working with Numerical values as it makes it easy to apply mathematical functions.
-# 3--> tensorflow for Being an Open-Source library for deep learning and machine learning, TensorFlow plays a role in text-based applications, image recognition, voice search, and many more.
-# 4--> Keras sequential model is suitable for analysis and comparison of simple neural network-oriented models which comprises layers and their associated data using top to bottom flow. It makes use of a single set of input as to value and a single set of output as per flow.
-# Here we use LSTM because --
+1--> Pandas for mostly used for data analysis tasks in Python .Pandas library works well for numeric, alphabets, and heterogeneous types of data simultaneously.
+2--> NumPy for mostly used for working with Numerical values as it makes it easy to apply mathematical functions.
+3--> tensorflow for Being an Open-Source library for deep learning and machine learning, TensorFlow plays a role in text-based applications, image recognition, voice search, and many more.
+4--> Keras sequential model is suitable for analysis and comparison of simple neural network-oriented models which comprises layers and their associated data using top to bottom flow. It makes use of a single set of input as to value and a single set of output as per flow.
+5-->Here we use LSTM because --
    #LSTM (Long Short-Term Memory) network is a type of RNN (Recurrent Neural Network) that is widely used for learning sequential data prediction problems. As every other neural network LSTM also has some layers which help it to learn and recognize the pattern for better performance.
-# Dense layer is used for implementing a dense layer that involves the neurons receiving the input from all the previous neurons that help implement the neural networks.
-# Embeddings make it easier to do machine learning on large inputs like sparse vectors representing words. Ideally, an embedding captures some of the semantics of the input by placing semantically similar inputs close together in the embedding space. An embedding can be learned and reused across models.
-# Adam uses estimations of first and second moments of gradient to adapt the learning rate for each weight of the neural network.
-# Tokenizer is used for Transforms each text in texts to a sequence of integers.
-# pad_sequences are used to pad the sequences with the same length.
+6-->Dense layer is used for implementing a dense layer that involves the neurons receiving the input from all the previous neurons that help implement the neural networks.
+7-->Embeddings make it easier to do machine learning on large inputs like sparse vectors representing words. Ideally, an embedding captures some of the semantics of the input by placing semantically similar inputs close together in the embedding space. An embedding can be learned and reused across models.
+8-->Adam uses estimations of first and second moments of gradient to adapt the learning rate for each weight of the neural network.
+9-->Tokenizer is used for Transforms each text in texts to a sequence of integers.
+10-->pad_sequences are used to pad the sequences with the same length.
 ##In Hospital-and-Name-Classification respiratory I am giving Hospital and Human Name Classification.ipynb file for coding, you can just download or copy it and paste in Google colab and run the program.
-# Also I give you below program for same.
-# Before running the program you need to download csv file (human_names.csv and Hospital.csv) also.
-# In this I am build Deep Learning model which can generate new hospital names and Deep Learning model which can classify a given name into Human Name and Hospital Name classes.
+## Also I give you below program for same.
+## Before running the program you need to download csv file (human_names.csv and Hospital.csv) also.
+## In this I am build Deep Learning model which can generate new hospital names and Deep Learning model which can classify a given name into Human Name and Hospital Name classes.
 
 
 import numpy as np
