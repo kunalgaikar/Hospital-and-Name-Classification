@@ -51,8 +51,11 @@ df = pd.read_csv('Hospital.csv')
 
 # Tokenize hospital names
 tokenizer = Tokenizer(lower=True)
+
 tokenizer.fit_on_texts(df.hosp_name)
+
 tokenized_hospitals = tokenizer.texts_to_sequences(df.hosp_name)
+
 df.head()
 
 # Set max sequence length
@@ -65,46 +68,67 @@ padded_hospitals = pad_sequences(tokenized_hospitals, maxlen=max_length, padding
 
 # Define model
 model = Sequential()
+
 model.add(Embedding(len(tokenizer.word_index)+1, 64, input_length=max_length))
+
 model.add(LSTM(256))
+
 model.add(Dense(64))
+
 model.add(Dense(len(tokenizer.word_index)+1, activation='softmax'))
+
 model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Generate new hospital names
 start_word = "Hospital"
+
 start_word_tokenized = tokenizer.texts_to_sequences([start_word])[0]
+
 start_word_padded = pad_sequences([start_word_tokenized], maxlen=max_length)
+
 generated_word = model.predict(start_word_padded, verbose=0)[0]
+
 generated_word_index = np.argmax(generated_word)
+
 generated_word_tokenized = tokenizer.index_word[generated_word_index]
 
 # Print generated hospital names
 generated_hospitals = []
+
 for i in range(10):
+
     start_word_tokenized = tokenizer.texts_to_sequences([generated_word_tokenized])[0]
+    
     start_word_padded = pad_sequences([start_word_tokenized], maxlen=max_length)
+    
     generated_word = model.predict(start_word_padded, verbose=0)[0]
+    
     generated_word_index = np.argmax(generated_word)
+    
     generated_word_tokenized = tokenizer.index_word[generated_word_index]
+    
     generated_hospitals.append(generated_word_tokenized)
 
 print(generated_hospitals)
 
 import numpy as np
+
 import pandas as pd
 
 from keras.layers import Embedding, LSTM, Dense, Dropout
+
 from keras.models import Sequential
 
 
 # Read the dataset
 data = pd.read_csv('Hospital.csv')
+
 data.head()
 
 
 # Tokenize the words for each hospital name
 tokenizer = Tokenizer(char_level=True)
+
 tokenizer.fit_on_texts(data['hosp_name'])
 
 # Generate sequences for each hospital name
@@ -116,15 +140,21 @@ vocabulary_size = len(tokenizer.word_index)+1
 
 # Generate X and y
 X = pad_sequences(sequences, maxlen=50)
+
 y = np.array([1] * X.shape[0])
 
 
 # Create model
 model = Sequential()
+
 model.add(Embedding(input_dim=vocabulary_size, output_dim=50, input_length=50))
+
 model.add(LSTM(256))
+
 model.add(Dropout(0.2))
+
 model.add(Dense(1, activation='sigmoid'))
+
 
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -134,15 +164,25 @@ model.fit(X, y, batch_size=128, epochs=20, verbose=1)
 
 # Generate new hospital names
 seed_text = "Hosp"
+
 for _ in range(20):
+
     token_list = tokenizer.texts_to_sequences([seed_text])[0]
+    
     token_list = pad_sequences([token_list], maxlen=50, padding='pre')
+    
     predicted = (model.predict(token_list) > 0.5).astype("int32")
+    
     output_word = ""
+    
     for word, index in tokenizer.word_index.items():
+    
         if index == predicted:
+        
             output_word = word
+            
             break
+            
     seed_text += output_word
 
 print(seed_text)
@@ -151,31 +191,43 @@ print(seed_text)
 
 # making Data frame
 data_human = pd.read_csv('human_names.csv')
+
 data_hospital = pd.read_csv('Hospital.csv')
 
 # Classifying Human and Hospital Names Using Character-Level Deep Learning
 
 # Read the dataset
 data_human = pd.read_csv('human_names.csv')
+
 data_hospital = pd.read_csv('Hospital.csv')
 
 # Tokenize the words for each name
 tokenizer = Tokenizer(char_level=True)
+
 tokenizer.fit_on_texts(data_human.Name)
+
 tokenizer.fit_on_texts(data_hospital.hosp_name)
 
 # Generate sequences for each name
 human_sequences = tokenizer.texts_to_sequences(data_human['Name'])
+
 hospital_sequences = tokenizer.texts_to_sequences(data_hospital['hosp_name'])
 
 
 # Test the model
-seed_text = "jhon hospital"
+seed_text = "Hazel Ero"
+
 token_list = tokenizer.texts_to_sequences([seed_text])[0]
+
 token_list = pad_sequences([token_list], maxlen=50, padding='pre')
+
 predicted=(model.predict(token_list) > 0.5).astype("int32")
+
 if predicted == 0:
+
     print("This is a human name")
+    
 else:
+
     print("This is a hospital name")
  
